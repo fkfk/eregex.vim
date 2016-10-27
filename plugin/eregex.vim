@@ -45,22 +45,22 @@
 "     Extended regex To Vim regex.
 "     Replace each extended-regex in [range] with vim-style-regex.
 "
-" :M/eregex/[offset][iISCDMm]
+" :M[atch]/eregex/[offset][iISCDMm]
 "     Match.
 "     :M/<span class="foo">.*?<\/span>/Im
 "     => /\C<span class="foo">\_.\{-}<\/span>
 "
-" :[range]S/eregex/replacement/[&cegpriISCDMm]
+" :[range]S[ubstitute]/eregex/replacement/[&cegpriISCDMm]
 "     Substitute.
 "     :'<,'>S/(\d{1,3})(?=(\d\d\d)+($|\D))/\1,/g
 "     => :'<,'>s/\(\d\{1,3}\)\%(\(\d\d\d\)\+\($\|\D\)\)\@=/\1,/g
 "
-" :[range]G/eregex/command
+" :[range]G[lobal]/eregex/command
 "     Global.
 "     :G/<<-(["'])?EOD\1/,/^\s*EOD\>/:left 8
 "     => :g/<<-\(["']\)\=EOD\1/,/^\s*EOD\>/:left 8
 "
-" :[range]V/eregex/command
+" :[range]V[global]/eregex/command
 "     Vglobal
 "
 "=============================================================================
@@ -210,12 +210,12 @@ let loaded_eregex=1
 "=============================================================================
 "Commands And Mappings:
 command! -nargs=? -range E2v :<line1>,<line2>call <SID>ExtendedRegex2VimRegexLineWise(<q-args>)
-command! -nargs=? -count=1 M :let s:eregex_tmp_hlsearch = &hlsearch | let v:searchforward = <SID>Ematch(<count>, <q-args>) | if s:eregex_tmp_hlsearch == 1 | set hlsearch | endif
+command! -nargs=? -count=1 Match :let s:eregex_tmp_hlsearch = &hlsearch | let v:searchforward = <SID>Ematch(<count>, <q-args>) | if s:eregex_tmp_hlsearch == 1 | set hlsearch | endif
 "command! -nargs=? -range S :<line1>,<line2>call <SID>Esubstitute(<q-args>)
-command! -nargs=? -range S :<line1>,<line2>call <SID>Esubstitute(<q-args>) <Bar> :noh
+command! -nargs=? -range Substitute :<line1>,<line2>call <SID>Esubstitute(<q-args>) <Bar> :noh
 
-command! -nargs=? -range=% -bang G :<line1>,<line2>call <SID>Eglobal(<q-bang>, <q-args>)
-command! -nargs=? -range=% V :<line1>,<line2>call <SID>Evglobal(<q-args>)
+command! -nargs=? -range=% -bang Global :<line1>,<line2>call <SID>Eglobal(<q-bang>, <q-args>)
+command! -nargs=? -range=% Vglobal :<line1>,<line2>call <SID>Evglobal(<q-args>)
 
 "=============================================================================
 "Script Variables:

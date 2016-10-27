@@ -74,26 +74,26 @@ E2v({replacement}, {R1,R2,R3})
     Replace each extended-regex in [range] with vim-style-regex.
 
                                                             *:M*
-:M/eregex[/{offset} [iISCDMm]]
+:M[atch]/eregex[/{offset} [iISCDMm]]
     Match
     :M/<span class="foo">.*?<\/span>/Im
     ==> /\C<span class="foo">\_.\{-}<\/span>
 
                                                             *:S*
-:[range]S/{eregex}/{string}/[&cegpriISCDMm]
+:[range]S[ubstitute]/{eregex}/{string}/[&cegpriISCDMm]
     Substitute
     :'<,'>S/(\d{1,3})(?=(\d\d\d)+($|\D))/\1,/g
     ==> :'<,'>s/\(\d\{1,3}\)\%(\(\d\d\d\)\+\($\|\D\)\)\@=/\1,/g
 
                                                             *:G*  *:G!*
-:[range]G/{eregex}/{command}
-:[range]G!/{eregex}/{command}
+:[range]G[lobal]/{eregex}/{command}
+:[range]G[lobal]!/{eregex}/{command}
     Global
     :G/<<-(["'])?EOD\1/,/^\s*EOD\>/:left 8
     ==> :g/<<-\(["']\)\=EOD\1/,/^\s*EOD\>/:left 8
 
                                                             *:V*
-:[range]V/{eregex}/{command}
+:[range]V[global]/{eregex}/{command}
     Vglobal
 
 ==============================================================================
