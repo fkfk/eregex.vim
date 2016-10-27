@@ -309,8 +309,8 @@ function! eregex#toggle(...)
     let silent = 1
   endif
   if s:enable == 0
-    exec 'nnoremap <expr> '.g:eregex_forward_delim.' ":<C-U>".v:count1."M/"'
-    exec 'nnoremap <expr> '.g:eregex_backward_delim.' ":<C-U>".v:count1."M?"'
+    exec 'nnoremap <expr> '.g:eregex_forward_delim.' ":<C-U>".v:count1."Match/"'
+    exec 'nnoremap <expr> '.g:eregex_backward_delim.' ":<C-U>".v:count1."Match?"'
     if silent != 1
       echo "eregx.vim key mapping enabled"
     endif
