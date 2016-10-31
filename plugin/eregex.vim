@@ -967,7 +967,7 @@ endfunction
 "-----------------------------------------------------------------------------
 function! s:Evglobal(...) range
     let s:invert=1
-    let cmd = a:firstline . ',' . a:lastline . 'G' . a:1
+    let cmd = a:firstline . ',' . a:lastline . 'Global' . a:1
     exec cmd
 
 endfunction
